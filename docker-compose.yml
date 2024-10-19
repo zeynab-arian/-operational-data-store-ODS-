@@ -1,0 +1,44 @@
+version: '3'
+services:
+  mariadb1:
+    image: docker.arvancloud.ir/mariadb:11.5.2
+    container_name: mariadb1
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password1
+      MYSQL_DATABASE: db1
+    ports:
+      - "3307:3306"
+    volumes:
+      - mariadb1_data:/var/lib/mysql
+      - ./init/mariadb1:/docker-entrypoint-initdb.d
+
+  mariadb2:
+    image: docker.arvancloud.ir/mariadb:11.5.2
+    container_name: mariadb2
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password2
+      MYSQL_DATABASE: db4
+    ports:
+      - "3308:3306"
+    volumes:
+      - mariadb2_data:/var/lib/mysql
+      - ./init/mariadb2:/docker-entrypoint-initdb.d
+
+  ods_db:
+    image: docker.arvancloud.ir/mariadb:11.5.2
+    container_name: ods_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ods_root_password
+      MYSQL_DATABASE: ods
+      MYSQL_USER: ods_user
+      MYSQL_PASSWORD: ods_password
+    ports:
+      - "3309:3306"
+    volumes:
+      - ods_data:/var/lib/mysql
+      - ./init/ods:/docker-entrypoint-initdb.d
+
+volumes:
+  mariadb1_data:
+  mariadb2_data:
+  ods_data:

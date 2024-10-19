@@ -1,0 +1,26 @@
+ods:
+  host: localhost
+  port: 3309
+  user: ods_user
+  password: ods_password
+  database: ods
+
+databases:
+  - server_id: server1
+    host: localhost
+    port: 3307
+    user: root
+    password: root_password1
+    databases:
+      - db1
+      - db2
+      - db3
+  - server_id: server2
+    host: localhost
+    port: 3308
+    user: root
+    password: root_password2
+    databases:
+      - db4
+      - db5
+      - db6
